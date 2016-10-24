@@ -41,7 +41,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/email"
@@ -55,9 +55,9 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/phone"
-        android:layout_alignStart="@+id/phone"
-        android:layout_below="@+id/phone"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password"
+        android:layout_below="@+id/password"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />

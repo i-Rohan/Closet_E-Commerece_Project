@@ -19,7 +19,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         name = (EditText) findViewById(R.id.name);
         email = (EditText) findViewById(R.id.email);
-        phone = (EditText) findViewById(R.id.phone);
+        phone = (EditText) findViewById(R.id.password);
         password = (EditText) findViewById(R.id.password);
     }
 
