@@ -1,6 +1,5 @@
 package com.fancypackagename.rohansharma.closet.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -61,11 +60,6 @@ public class SignInActivity extends AppCompatActivity {
 
     public void onClickFacebookLogin(View v) {
 
-    }
-
-    public void onClickSignUp(View v) {
-        startActivity(new Intent(this, SignUpActivity.class));
-        finish();
     }
 
     protected void login() {

@@ -53,17 +53,6 @@
             android:onClick="onClickLogin"
             android:text="Sign In" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/password"
-            android:layout_alignRight="@+id/password"
-            android:layout_below="@+id/textView"
-            android:background="#0000"
-            android:onClick="onClickFacebookLogin"
-            app:srcCompat="@drawable/fb" />
-
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
@@ -72,22 +61,24 @@
             android:layout_centerHorizontal="true"
             android:text="OR" />
 
-        <Button
-            android:id="@+id/button3"
+        <ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/button2"
-            android:layout_alignStart="@+id/button2"
-            android:layout_below="@+id/textView3"
-            android:onClick="onClickSignUp"
-            android:text="Sign Up" />
+            android:layout_alignEnd="@+id/password"
+            android:layout_alignRight="@+id/password"
+            android:layout_below="@+id/button2"
+            android:background="#0000"
+            android:onClick="onClickFacebookLogin"
+            app:srcCompat="@drawable/fb" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button2"
+            android:layout_below="@+id/imageButton"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="9dp"
             android:onClick="onClickSkip"
             android:text="@string/skip" />
     </RelativeLayout>

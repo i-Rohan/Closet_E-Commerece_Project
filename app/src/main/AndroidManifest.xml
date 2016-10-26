@@ -27,7 +27,6 @@
         <activity
             android:name=".main.SignInActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".main.SignUpActivity" />
     </application>
 
 </manifest>
