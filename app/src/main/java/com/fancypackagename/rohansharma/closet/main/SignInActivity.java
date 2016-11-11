@@ -29,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        overridePendingTransition(R.anim.zoom_in, R.anim.out);
+        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
 
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
