@@ -1,5 +1,7 @@
 package com.fancypackagename.rohansharma.closet.main;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,6 +18,9 @@ import com.android.volley.toolbox.Volley;
 import com.fancypackagename.rohansharma.closet.R;
 import com.fancypackagename.rohansharma.closet.commons.AppCommons;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,10 +34,19 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        setTitle("Sign In");
+
         overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
 
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("SignIn", MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("signedIn", false)) {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
+        }
     }
 
     public void onClickLogin(View v) {
@@ -58,10 +72,6 @@ public class SignInActivity extends AppCompatActivity {
         login();
     }
 
-    public void onClickFacebookLogin(View v) {
-
-    }
-
     protected void login() {
         String url = AppCommons.API_URL + "login";
 
@@ -71,6 +81,64 @@ public class SignInActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("login", response);
                         pDialog.dismissWithAnimation();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getString("result").equals("success")) {
+                                SharedPreferences.Editor editor = getSharedPreferences("SignIn", MODE_PRIVATE).edit();
+                                editor.putBoolean("signedIn", true);
+                                editor.putString("name", jsonObject.getString("name"));
+                                editor.putString("email", email.getText().toString().trim());
+                                editor.apply();
+                                SweetAlertDialog success = new SweetAlertDialog(SignInActivity.this,
+                                        SweetAlertDialog.SUCCESS_TYPE);
+                                success.setTitleText("Welcome!");
+                                success.setContentText(jsonObject.getString("name"));
+                                success.setConfirmText("Continue");
+                                success.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+                                        finish();
+                                    }
+                                });
+                                success.showCancelButton(false);
+                                success.setCancelable(false);
+                                success.setCanceledOnTouchOutside(false);
+                                success.show();
+                            } else {
+                                SweetAlertDialog warning = new SweetAlertDialog(SignInActivity.this,
+                                        SweetAlertDialog.WARNING_TYPE);
+                                warning.setTitleText("Incorrect Credentials!");
+                                warning.setContentText("Please check spellings and try again.");
+                                warning.setConfirmText("Okay");
+                                warning.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismissWithAnimation();
+                                    }
+                                });
+                                warning.showCancelButton(false);
+                                warning.setCancelable(true);
+                                warning.show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+
+                            SweetAlertDialog error1 = new SweetAlertDialog(SignInActivity.this,
+                                    SweetAlertDialog.ERROR_TYPE);
+                            error1.setTitleText("Connection Problem!");
+                            error1.setContentText("Please check connection and try again.");
+                            error1.setConfirmText("Okay");
+                            error1.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                }
+                            });
+                            error1.showCancelButton(false);
+                            error1.setCancelable(true);
+                            error1.show();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -78,6 +146,21 @@ public class SignInActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Log.e("login", "error");
                         pDialog.dismissWithAnimation();
+
+                        SweetAlertDialog error2 = new SweetAlertDialog(SignInActivity.this,
+                                SweetAlertDialog.ERROR_TYPE);
+                        error2.setTitleText("Connection Problem!");
+                        error2.setContentText("Please check connection and try again.");
+                        error2.setConfirmText("Okay");
+                        error2.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                        error2.showCancelButton(false);
+                        error2.setCancelable(true);
+                        error2.show();
                     }
                 }) {
             @Override
@@ -94,6 +177,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void onClickSkip(View v) {
-
+        startActivity(new Intent(SignInActivity.this, HomeActivity.class));
     }
 }
