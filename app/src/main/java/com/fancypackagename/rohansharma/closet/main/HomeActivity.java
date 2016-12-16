@@ -38,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
     public static Context context;
     public static List<GridViewItemObject> allProducts = new ArrayList<>();
     CarouselView customCarouselView;
+
     String[] imageNames = {
             "carousel-01.png",
             "carousel-02.png",
@@ -59,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 
         setTitle("Home");
 

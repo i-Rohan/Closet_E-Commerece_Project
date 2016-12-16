@@ -14,7 +14,6 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-
         Intent i = getIntent();
         if (i != null)
             productId = i.getStringExtra("productId");
