@@ -8,6 +8,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.fancypackagename.rohansharma.closet.R;
 import com.fancypackagename.rohansharma.closet.commons.AppCommons;
 
@@ -28,6 +31,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SignInActivity extends AppCompatActivity {
     EditText email, password;
+    ImageView closet;
     SweetAlertDialog pDialog;
 
     @Override
@@ -36,7 +40,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         setTitle("Sign In");
-
+        closet = (ImageView) findViewById(R.id.closet);
         overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
 
         email = (EditText) findViewById(R.id.email);
@@ -47,6 +51,11 @@ public class SignInActivity extends AppCompatActivity {
             startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
+
+
+        YoYo.with(Techniques.SlideInUp)
+                .duration(1000)
+                .playOn(findViewById(R.id.closet));
     }
 
     public void onClickLogin(View v) {

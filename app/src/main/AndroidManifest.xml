@@ -31,7 +31,8 @@
         <activity
             android:name=".main.SignInActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".main.HomeActivity"></activity>
+        <activity android:name=".main.HomeActivity" />
+        <activity android:name=".main.ProductActivity"></activity>
     </application>
 
 </manifest>

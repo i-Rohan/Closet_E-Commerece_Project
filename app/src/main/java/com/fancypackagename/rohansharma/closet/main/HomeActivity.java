@@ -36,6 +36,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     public static Context context;
+    public static List<GridViewItemObject> allProducts = new ArrayList<>();
     CarouselView customCarouselView;
     String[] imageNames = {
             "carousel-01.png",
@@ -43,7 +44,6 @@ public class HomeActivity extends AppCompatActivity {
             "carousel-03.png"
     };
     ProgressBar progressBar;
-    List<GridViewItemObject> allProducts = new ArrayList<>();
     RecyclerView rView;
 
     // To set simple images
@@ -107,9 +107,14 @@ public class HomeActivity extends AppCompatActivity {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                Log.d("pid", "" + jsonObject.getString("ProductId"));
                                 allProducts.add(new GridViewItemObject(
                                         jsonObject.getString("ProductName"),
-                                        jsonObject.getString("Price")));
+                                        jsonObject.getString("Price"),
+                                        jsonObject.getString("Images"),
+                                        jsonObject.getString("Type"),
+                                        jsonObject.getString("ProductId").replaceAll("\\s", "%20")));
+
                             }
                             RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(HomeActivity.this, allProducts);
                             rView.setAdapter(rcAdapter);

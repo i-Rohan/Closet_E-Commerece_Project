@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fancypackagename.rohansharma.closet.R;
+import com.fancypackagename.rohansharma.closet.commons.AppCommons;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
-    private List<GridViewItemObject> itemList;
+    public static List<GridViewItemObject> itemList;
     private Context context;
 
     public RecyclerViewAdapter(Context context, List<GridViewItemObject> itemList) {
@@ -34,8 +36,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         holder.productName.setText(itemList.get(position).getProductName());
-        holder.price.setText(itemList.get(position).getPrice());
+        holder.price.setText("₹ " + itemList.get(position).getPrice());
+        Picasso.with(context)
+                .load(AppCommons.PUBLIC_URL + itemList.get(position).getImage().replaceAll("\\s","%20"))
+                .placeholder(R.drawable.placeholder_588_588)   // optional
+//                .error(R.drawable.error)      // optional
+//                .resize(50, 50)                        // optional
+                .into(holder.productImage);
+        holder.button.setText(itemList.get(position).getButton());
     }
+
 
     @Override
     public int getItemCount() {

@@ -30,15 +30,6 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setAnimLogoSplashTechnique(Techniques.FadeInDown); //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
 
 
-//        //Customize Path
-//        configSplash.setPathSplash(imageUri); //set path String
-//        configSplash.setOriginalHeight(400); //in relation to your svg (path) resource
-//        configSplash.setOriginalWidth(400); //in relation to your svg (path) resource
-//        configSplash.setAnimPathStrokeDrawingDuration(3000);
-//        configSplash.setPathSplashStrokeSize(3); //I advise value be <5
-//        configSplash.setPathSplashStrokeColor(R.color.sweet_dialog_bg_color); //any color you want form colors.xml
-//        configSplash.setAnimPathFillingDuration(3000);
-//        configSplash.setPathSplashFillColor(R.color.colorPrimaryDark); //path object filling color
 
 
         //Customize Title

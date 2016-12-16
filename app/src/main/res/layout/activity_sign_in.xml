@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/wall"
     android:layout_height="match_parent">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,19 +17,11 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.fancypackagename.rohansharma.closet.main.SignInActivity">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/logo" />
-
         <EditText
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView2"
+            android:layout_below="@+id/closet"
             android:layout_centerHorizontal="true"
             android:ems="10"
             android:hint="Email"
@@ -44,14 +38,28 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
-        <Button
+
+        <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/password"
-            android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:onClick="onClickLogin"
-            android:text="Sign In" />
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            fancy:fb_borderColor="#FFFFFF"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="#7ab800"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_fontIconResource="&#xf04b;"
+            fancy:fb_radius="30dp"
+            fancy:fb_text="SIGN IN"
+            fancy:fb_textColor="#FFFFFF"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="100dp" />
+
 
         <TextView
             android:id="@+id/textView"
@@ -62,5 +70,15 @@
             android:layout_marginTop="9dp"
             android:onClick="onClickSkip"
             android:text="@string/skip" />
+
+        <ImageView
+            android:id="@+id/closet"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/logo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="31dp" />
     </RelativeLayout>
 </ScrollView>
