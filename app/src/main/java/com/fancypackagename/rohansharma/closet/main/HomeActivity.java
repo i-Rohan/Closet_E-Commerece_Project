@@ -3,6 +3,8 @@ package com.fancypackagename.rohansharma.closet.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,9 +22,14 @@ import com.android.volley.toolbox.Volley;
 import com.fancypackagename.rohansharma.closet.R;
 import com.fancypackagename.rohansharma.closet.commons.AppCommons;
 import com.fancypackagename.rohansharma.closet.main.gridview.GridViewItemObject;
+import com.fancypackagename.rohansharma.closet.main.gridview.RecyclerViewAdapter;
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
     };
     ProgressBar progressBar;
     List<GridViewItemObject> allProducts = new ArrayList<>();
+    RecyclerView rView;
 
     // To set simple images
     ImageListener imageListener = new ImageListener() {
@@ -68,6 +76,12 @@ public class HomeActivity extends AppCompatActivity {
         customCarouselView.setImageListener(imageListener);
 
         getProductsList();
+
+        GridLayoutManager lLayout = new GridLayoutManager(HomeActivity.this, 2);
+
+        rView = (RecyclerView) findViewById(R.id.recycler_view);
+        rView.setHasFixedSize(true);
+        rView.setLayoutManager(lLayout);
     }
 
     @Override
@@ -87,6 +101,21 @@ public class HomeActivity extends AppCompatActivity {
                         Log.d("Home", response);
 
                         progressBar.setVisibility(View.GONE);
+                        rView.setVisibility(View.VISIBLE);
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                allProducts.add(new GridViewItemObject(
+                                        jsonObject.getString("ProductName"),
+                                        jsonObject.getString("Price")));
+                            }
+                            RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(HomeActivity.this, allProducts);
+                            rView.setAdapter(rcAdapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                 new Response.ErrorListener() {

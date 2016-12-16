@@ -4,11 +4,10 @@ package com.fancypackagename.rohansharma.closet.main.gridview;
  * Created by Rohan Sharma on 13-07-2016.
  */
 public class GridViewItemObject {
-    private String productName, sellerName, price;
+    private String productName, price;
 
-    public GridViewItemObject(String productName, String sellerName, String price) {
+    public GridViewItemObject(String productName, String price) {
         this.productName = productName;
-        this.sellerName = sellerName;
         this.price = price;
     }
 
