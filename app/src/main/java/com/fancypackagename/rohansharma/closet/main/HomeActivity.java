@@ -22,6 +22,8 @@ public class HomeActivity extends AppCompatActivity {
 
         setTitle("Home");
 
+        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+
         PagerAdapter adapter = new PagerAdapter();
 
         pager = (ViewPager)findViewById(R.id.vpager);
@@ -48,12 +50,6 @@ public class HomeActivity extends AppCompatActivity {
                 });
             }
         }, 2000, 3000);
-
-
-
-
-
-        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
     }
 
     @Override
@@ -61,15 +57,6 @@ public class HomeActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.home, menu);
         return super.onCreateOptionsMenu(menu);
-
-
-
-
-
-
-
-
-
     }
 
 //    @Override

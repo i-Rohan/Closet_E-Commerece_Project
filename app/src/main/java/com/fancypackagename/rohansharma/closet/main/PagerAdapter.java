@@ -26,25 +26,19 @@ public class PagerAdapter extends android.support.v4.view.PagerAdapter {
         int resId = 0;
         switch (position) {
             case 0:
-                resId = showadmin();
-
+                resId = sponsoredProduct1();
                 break;
             case 1:
-                resId = showuser();
+                resId = sponsoreddProduct2();
                 break;
             case 2:
-                resId = showme();
+                resId = sponsoredProduct3();
                 break;
-
-
-
         }
 
         View view = inflater.inflate(resId, null);
         ((ViewPager) collection).addView(view, 0);
         return view;
-
-
     }
 
     @Override
@@ -52,29 +46,24 @@ public class PagerAdapter extends android.support.v4.view.PagerAdapter {
         return view == object;
     }
 
-    public int showadmin() {
+    public int sponsoredProduct1() {
         int r;
-        r = R.layout.sponsorproduct1;
+        r = R.layout.sponsored_product1;
         return r;
     }
 
-    public int showuser() {
+    public int sponsoreddProduct2() {
         int r;
-        r = R.layout.sponsorproduct2;
-        return r;
-    }
-    public int showme(){
-        int r;
-        r=R.layout.sponsorproduct3;
+        r = R.layout.sponsored_product2;
         return r;
     }
 
-//    public int showmelast() {
-//
-//        int r;
-//        r = R.layout.about_d;
-//        return r;
-//    }
+    public int sponsoredProduct3() {
+        int r;
+        r = R.layout.sponsored_product3;
+        return r;
+    }
+
     @Override
     public void destroyItem(View container, int position, Object object) {
         ((ViewPager) container).removeView((View) object);
