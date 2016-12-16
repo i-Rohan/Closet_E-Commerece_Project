@@ -35,10 +35,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        holder.productName.setText(itemList.get(position).getProductName());
+        holder.productName.setText(itemList.get(position).getProductName().length() >= 15 ? itemList.get(position).getProductName().substring(0, 15) + "..." : itemList.get(position).getProductName());
         holder.price.setText("₹ " + itemList.get(position).getPrice());
         Picasso.with(context)
-                .load(AppCommons.PUBLIC_URL + itemList.get(position).getImage().replaceAll("\\s","%20"))
+                .load(AppCommons.PUBLIC_URL + itemList.get(position).getImage().replaceAll("\\s", "%20"))
                 .placeholder(R.drawable.placeholder_588_588)   // optional
 //                .error(R.drawable.error)      // optional
 //                .resize(50, 50)                        // optional
