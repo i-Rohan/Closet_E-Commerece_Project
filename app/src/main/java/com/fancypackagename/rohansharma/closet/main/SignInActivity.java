@@ -86,13 +86,13 @@ public class SignInActivity extends AppCompatActivity {
                             if (jsonObject.getString("result").equals("success")) {
                                 SharedPreferences.Editor editor = getSharedPreferences("SignIn", MODE_PRIVATE).edit();
                                 editor.putBoolean("signedIn", true);
-                                editor.putString("name", jsonObject.getString("name"));
+                                editor.putString("productName", jsonObject.getString("productName"));
                                 editor.putString("email", email.getText().toString().trim());
                                 editor.apply();
                                 SweetAlertDialog success = new SweetAlertDialog(SignInActivity.this,
                                         SweetAlertDialog.SUCCESS_TYPE);
                                 success.setTitleText("Welcome!");
-                                success.setContentText(jsonObject.getString("name"));
+                                success.setContentText(jsonObject.getString("productName"));
                                 success.setConfirmText("Continue");
                                 success.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
