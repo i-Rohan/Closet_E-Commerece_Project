@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -14,6 +17,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fancypackagename.rohansharma.closet.R;
 import com.fancypackagename.rohansharma.closet.commons.AppCommons;
+import com.squareup.picasso.Picasso;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +28,14 @@ import org.json.JSONObject;
 public class ProductActivity extends AppCompatActivity {
 
     String productId, productName, sellerName, info, price, images[], type, condition;
+    CarouselView customProduct;
+     TextView pname,sname,pprice,pinfo,pcondition;
+    Button ptype;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +46,32 @@ public class ProductActivity extends AppCompatActivity {
             productId = i.getStringExtra("productId");
 
         getProductsInfo(productId);
+
+        pname = (TextView) findViewById(R.id.name);
+        sname =(TextView) findViewById(R.id.sname);
+        pinfo =(TextView) findViewById(R.id.info);
+        pprice =(TextView) findViewById(R.id.pprice);
+        ptype =(Button) findViewById(R.id.type);
+        pcondition =(TextView) findViewById(R.id.condition);
+        customProduct = (CarouselView) findViewById(R.id.customProduct);
+
+
+        customProduct.setSlideInterval(4000);
+        // set ViewListener for custom view
+        customProduct.setImageListener(imageListener);
+
+
     }
+
+    // To set simple images
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            Picasso.with(getApplicationContext()).load(AppCommons.PUBLIC_URL + images[position].replaceAll("\\s","%20")).into(imageView);
+            Log.d("HAHA",AppCommons.PUBLIC_URL+"images/"+images[position]);
+            //imageView.setImageResource(sampleImages[position]);
+        }
+    };
 
     void getProductsInfo(String id) {
         String url = AppCommons.API_URL + "get_product_info?id=" + id;
@@ -45,15 +84,45 @@ public class ProductActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             productName = jsonObject.getString("ProductName");
-                            sellerName = jsonObject.getString("sellerName");
+                            sellerName = jsonObject.getString("SellerName");
                             info = jsonObject.getString("Information");
                             price = jsonObject.getString("Price");
-                            JSONArray jsonArray = jsonObject.getJSONArray("Images");
-                            images = new String[jsonArray.length()];
-                            for (int i = 0; i < jsonArray.length(); i++)
-                                images[i] = jsonArray.getString(i);
                             type = jsonObject.getString("Type");
                             condition = jsonObject.getString("Condition");
+                            JSONArray jsonArray = jsonObject.getJSONArray("Images");
+                            images = new String[jsonArray.length()];
+                            Log.d("LOD",jsonObject.getString("Images"));
+
+                            pname.setText(productName);
+                            sname.setText(sellerName);
+                            pprice.setText("₹"+ price);
+                            pinfo.setText(info);
+                            pcondition.setText("Condition:"+condition);
+                            ptype.setText(type);
+
+                            for (int i = 0; i < jsonArray.length(); i++)
+                            { images[i] = jsonArray.getString(i);
+                                 Log.d("LODAA",images[i]);
+
+                            }
+
+
+                            customProduct.setPageCount(images.length);
+
+                            type = jsonObject.getString("Type");
+                            condition = jsonObject.getString("Condition");
+
+
+
+
+
+
+
+
+
+
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -67,8 +136,8 @@ public class ProductActivity extends AppCompatActivity {
                         Toast.makeText(ProductActivity.this, "Connection problem! :(",
                                 Toast.LENGTH_SHORT).show();
                     }
-                }) {
-        };
+                });
+
 
         RequestQueue requestQueue = Volley.newRequestQueue(ProductActivity.this);
         requestQueue.add(stringRequest);

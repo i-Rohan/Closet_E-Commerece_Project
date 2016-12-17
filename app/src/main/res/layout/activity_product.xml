@@ -13,7 +13,7 @@
 
 
     <com.synnapps.carouselview.CarouselView
-        android:id="@+id/customCarouselView"
+        android:id="@+id/customProduct"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:fillColor="#FFFFFFFF"
@@ -22,5 +22,61 @@
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp"/>
+
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/name"
+    android:layout_below="@id/customProduct"
+    android:gravity="center"
+    android:fontFamily="sans-serif"
+
+    android:layout_marginTop="10dp" />
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/sname"
+    android:layout_below="@id/name"
+    android:gravity="center"
+    android:fontFamily="sans-serif"
+
+    android:layout_marginTop="5dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pprice"
+        android:layout_below="@id/sname"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+
+        android:layout_marginTop="5dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/info"
+        android:layout_below="@id/pprice"
+        android:gravity="left"
+        android:fontFamily="sans-serif"
+
+        android:layout_marginTop="5dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/condition"
+        android:layout_below="@id/info"
+        android:gravity="left"
+        android:fontFamily="sans-serif"
+
+        android:layout_marginTop="5dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/type"
+        android:layout_below="@id/condition"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        />
+
 
 </RelativeLayout>

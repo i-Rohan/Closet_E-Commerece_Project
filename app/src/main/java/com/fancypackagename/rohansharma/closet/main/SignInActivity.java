@@ -39,7 +39,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        setTitle("Sign In");
+
         closet = (ImageView) findViewById(R.id.closet);
         overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
 
