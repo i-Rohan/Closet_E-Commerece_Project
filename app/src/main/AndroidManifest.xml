@@ -33,7 +33,8 @@
             android:theme="@style/AppTheme.Fullscreen"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".main.HomeActivity" />
-        <activity android:name=".main.ProductActivity"></activity>
+        <activity android:name=".main.ProductActivity" />
+        <activity android:name=".main.CartActivity"></activity>
     </application>
 
 </manifest>

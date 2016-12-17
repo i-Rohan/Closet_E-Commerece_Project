@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -128,5 +131,28 @@ public class ProductActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(ProductActivity.this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+            case R.id.cart:
+//                startActivity(new Intent(this, EditDetailsActivity.class));
+                break;
+            case R.id.logout:
+//                startActivity(new Intent(this, ChangePasswordActivity.class));
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

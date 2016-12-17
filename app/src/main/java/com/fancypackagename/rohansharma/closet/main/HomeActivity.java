@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -140,5 +141,21 @@ public class HomeActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+            case R.id.cart:
+//                startActivity(new Intent(this, EditDetailsActivity.class));
+                break;
+            case R.id.logout:
+//                startActivity(new Intent(this, ChangePasswordActivity.class));
+                break;
+        }
+        return true;
     }
 }
