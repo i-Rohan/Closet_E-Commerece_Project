@@ -189,5 +189,6 @@ public class SignInActivity extends AppCompatActivity {
 
     public void onClickSkip(View v) {
         startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+        finish();
     }
 }

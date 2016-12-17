@@ -30,8 +30,8 @@
         </activity>
         <activity
             android:name=".main.SignInActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.Fullscreen"/>
+            android:theme="@style/AppTheme.Fullscreen"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".main.HomeActivity" />
         <activity android:name=".main.ProductActivity"></activity>
     </application>
