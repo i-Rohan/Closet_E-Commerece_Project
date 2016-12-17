@@ -52,7 +52,9 @@ public class SignInActivity extends AppCompatActivity {
             finish();
         }
 
-
+        YoYo.with(Techniques.Tada)
+                .duration(1700)
+                .playOn(findViewById(R.id.closet));
         YoYo.with(Techniques.SlideInUp)
                 .duration(1000)
                 .playOn(findViewById(R.id.closet));
