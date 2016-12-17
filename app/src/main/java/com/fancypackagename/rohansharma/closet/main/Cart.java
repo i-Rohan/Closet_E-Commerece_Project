@@ -5,16 +5,17 @@ package com.fancypackagename.rohansharma.closet.main;
  */
 
 public class Cart {
-    String productName, sellerName, size, color;
+    String productName, sellerName, size, color, image;
     int quantity;
     double price;
 
-    public Cart(String productName, String sellerName, String size, String color, int quantity, double price) {
+    public Cart(String productName, String sellerName, String size, String color, int quantity, double price, String image) {
         this.productName = productName;
         this.sellerName = sellerName;
         this.size = size;
         this.color = color;
         this.quantity = quantity;
         this.price = price;
+        this.image = image;
     }
 }
