@@ -39,7 +39,6 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-
         closet = (ImageView) findViewById(R.id.closet);
         overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
 
@@ -52,9 +51,6 @@ public class SignInActivity extends AppCompatActivity {
             finish();
         }
 
-        YoYo.with(Techniques.Tada)
-                .duration(1700)
-                .playOn(findViewById(R.id.closet));
         YoYo.with(Techniques.SlideInUp)
                 .duration(1000)
                 .playOn(findViewById(R.id.closet));
@@ -90,7 +86,7 @@ public class SignInActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("login", response);
+                        Log.d("addToCart", response);
                         pDialog.dismissWithAnimation();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -103,7 +99,7 @@ public class SignInActivity extends AppCompatActivity {
                                 SweetAlertDialog success = new SweetAlertDialog(SignInActivity.this,
                                         SweetAlertDialog.SUCCESS_TYPE);
                                 success.setTitleText("Welcome!");
-                                success.setContentText(jsonObject.getString("productName"));
+                                success.setContentText(jsonObject.getString("name"));
                                 success.setConfirmText("Continue");
                                 success.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
@@ -155,7 +151,7 @@ public class SignInActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("login", "error");
+                        Log.e("addToCart", "error");
                         pDialog.dismissWithAnimation();
 
                         SweetAlertDialog error2 = new SweetAlertDialog(SignInActivity.this,

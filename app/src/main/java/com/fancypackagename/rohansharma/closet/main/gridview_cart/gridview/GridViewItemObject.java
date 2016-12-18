@@ -4,17 +4,19 @@ package com.fancypackagename.rohansharma.closet.main.gridview_cart.gridview;
  * Created by Rohan Sharma on 13-07-2016.
  */
 public class GridViewItemObject {
-    double price;
-    int quantity;
-    private String productName, image, button, productId, sellerName, size;
+    private double price;
+    private int quantity;
+    private String productName, image, sellerName, size, color;
 
-    public GridViewItemObject(String productName, double price, String image, int quantity, String sellerName, String size) {
+    public GridViewItemObject(String productName, String sellerName, String size, String color, int quantity, double price, String image) {
         this.productName = productName;
         this.price = price;
         this.image = image;
         this.quantity = quantity;
         this.sellerName = sellerName;
         this.size = size;
+        this.color = color;
+        this.image = image;
     }
 
     public String getProductName() {
@@ -41,22 +43,6 @@ public class GridViewItemObject {
         this.image = image;
     }
 
-    public String getButton() {
-        return button;
-    }
-
-    public void setButton(String button) {
-        this.button = button;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
     public String getSellerName() {
         return sellerName;
     }
@@ -71,5 +57,21 @@ public class GridViewItemObject {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

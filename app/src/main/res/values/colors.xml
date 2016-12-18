@@ -3,5 +3,5 @@
     <color name="colorPrimary">#3498db</color>
     <color name="colorPrimaryDark">#3498db</color>
     <color name="apptheme">#007f7f</color>
-    <color name="colorAccent">#e74c3c</color>
+    <color name="colorAccent">#3498db</color>
 </resources>

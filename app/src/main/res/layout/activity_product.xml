@@ -52,7 +52,8 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif"
 
-                android:gravity="center" />
+                android:gravity="center"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/sname"
@@ -71,7 +72,8 @@
                 android:layout_below="@id/sname"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/info"
@@ -79,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pprice"
                 android:layout_marginTop="5dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="sans-serif-light"
                 android:gravity="start" />
 
             <TextView
@@ -89,7 +91,8 @@
                 android:layout_below="@id/info"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif"
-                android:gravity="start" />
+                android:gravity="start"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/type"
@@ -97,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/condition"
                 android:background="@color/colorPrimary"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:layout_marginTop="5dp" />
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

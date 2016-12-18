@@ -29,6 +29,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
         productImage = (ImageView) itemView.findViewById(R.id.product_image);
         price = (TextView) itemView.findViewById(R.id.price);
         button = (Button) itemView.findViewById(R.id.button);
+
+
+
+
     }
 
     @Override

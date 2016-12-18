@@ -1,6 +1,8 @@
 package com.fancypackagename.rohansharma.closet.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -61,7 +63,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
 
         setTitle("Home");
 
@@ -150,10 +151,14 @@ public class HomeActivity extends AppCompatActivity {
                 super.onBackPressed();
                 break;
             case R.id.cart:
-//                startActivity(new Intent(this, EditDetailsActivity.class));
+                startActivity(new Intent(this, CartActivity.class));
                 break;
             case R.id.logout:
-//                startActivity(new Intent(this, ChangePasswordActivity.class));
+                SharedPreferences.Editor sda = getSharedPreferences("SignIn", MODE_PRIVATE).edit();
+                sda.remove("signedIn");
+                sda.apply();
+                startActivity(new Intent(this, SignInActivity.class));
+                finish();
                 break;
         }
         return true;
